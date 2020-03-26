@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Shopping</title>
-    <link rel="icon" href="/icon/icon.png">
+    <link rel="icon" href="{% static '/icon/icon.png' %}">
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 
     <style>
@@ -25,7 +27,7 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-light">
         <a href="#" class="navbar-brand">
-            <img src="/static/images/logo.png" alt="" class="img-fluid" style="max-width: 3em;">
+            <img src="{% static '/images/logo.png' %}" alt="" class="img-fluid" style="max-width: 3em;">
         </a>
         <div class="list">
             <ul  class="navbar-nav">
@@ -40,7 +42,7 @@
                     <a href="signup.html" class="nav-link pl-4">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a href="signin.html" class="nav-link pl-4">Sign In</a>
+                    <a href="{% url 'shop:signin' %}" class="nav-link pl-4">Sign In</a>
                 </li>
                 <li class="nav-item">
                     <a href="profile.html" class="nav-link pl-4">Profile</a>
@@ -61,7 +63,7 @@
         <div class="row justify-content-center ">
             <div class="col-sm-3 shadow-sm items"  style="margin-bottom: 3em;">
                 <div class="col-12">
-                    <img src="/static/images/blue_hoodie Cropped.jpg" alt="" class="img-fluid">
+                    <img src="{% static '/images/blue_hoodie Cropped.jpg' %}" alt="" class="img-fluid">
                 </div>
                 <div class="col-12">
                     <h2><small>$245</small></h2>
@@ -71,7 +73,7 @@
             </div>
             <div class="col-sm-3 shadow-sm items"  style="margin-bottom: 3em;">
                 <div class="col-12">
-                    <img src="/static/images/hoodie Cropped.jpg" alt="" class="img-fluid">
+                    <img src="{% static 'images/hoodie Cropped.jpg' %}" alt="" class="img-fluid">
                 </div>
                 <div class="col-12">
                     <h2><small>$245</small></h2>
@@ -81,7 +83,7 @@
             </div>
             <div class="col-sm-3 shadow-sm items"  style="margin-bottom: 3em;">
                 <div class="col-12">
-                    <img src="/static/images/purple_hoodie Cropped.jpg" alt="" class="img-fluid">
+                    <img src="{% static '/images/purple_hoodie Cropped.jpg' %}" alt="" class="img-fluid">
                 </div>
                 <div class="col-12">
                     <h2><small>$245</small></h2>
@@ -91,7 +93,7 @@
             </div>
             <div class="col-sm-3 shadow-sm items"  style="margin-bottom: 3em;">
                 <div class="col-12">
-                    <img src="/static/images/red_hoodie Cropped.jpg" alt="" class="img-fluid">
+                    <img src="{% static '/images/red_hoodie Cropped.jpg' %}" alt="" class="img-fluid">
                 </div>
                 <div class="col-12">
                     <h2><small>$245</small></h2>
@@ -101,7 +103,7 @@
             </div>
             <div class="col-sm-3 shadow-sm items"  style="margin-bottom: 3em;">
                 <div class="col-12">
-                    <img src="/static/images/blue_hoodie Cropped.jpg" alt="" class="img-fluid">
+                    <img src="{% static '/images/blue_hoodie Cropped.jpg' %}" alt="" class="img-fluid">
                 </div>
                 <div class="col-12">
                     <h2><small>$245</small></h2>
@@ -111,7 +113,7 @@
             </div>
             <div class="col-sm-3 shadow-sm items"  style="margin-bottom: 3em;">
                 <div class="col-12">
-                    <img src="/static/images/white_jacket Cropped.jpg" alt="" class="img-fluid">
+                    <img src="{% static '/images/white_jacket Cropped.jpg' %}" alt="" class="img-fluid">
                 </div>
                 <div class="col-12">
                     <h2><small>$245</small></h2>
@@ -121,7 +123,7 @@
             </div>
             <div class="col-sm-3 shadow-sm items"  style="margin-bottom: 3em;">
                 <div class="col-12">
-                    <img src="/static/images/brown_jacket Cropped.jpg" alt="" class="img-fluid">
+                    <img src="{% static '/images/brown_jacket Cropped.jpg' %}" alt="" class="img-fluid">
                 </div>
                 <div class="col-12">
                     <h2><small>$245</small></h2>
@@ -175,6 +177,6 @@
     </div>
 
 
-    <script src="/static/js/scripts.js"></script>
+    <script src="{% static '/js/scripts.js' %}"></script>
 </body>
 </html>
