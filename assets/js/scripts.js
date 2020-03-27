@@ -10,3 +10,9 @@ for(let i=0;i<items.length;i++){
     })
 }
 
+let carts = document.querySelectorAll("#cart");
+carts.forEach((item,index)=>{
+    carts[index].addEventListener("click",function(){
+        console.log("added")
+    })
+})
