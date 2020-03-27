@@ -12,10 +12,11 @@ items.forEach((item,index)=>{
         product_name:name,
         product_price:price,
         product_image:image,
+        product_incart:0,
     }
     products.push(product);
 })
-console.log(products);
+
 
 
 
@@ -30,12 +31,21 @@ for(let i=0;i<items.length;i++){
     })
 }
 
+
+
+
+
 let carts = document.querySelectorAll("button");
 for(let i=0;i<carts.length;i++){
     carts[i].addEventListener("click",()=>{
         cartNumber();
+        setItems(products[i]);
+        
     })
 }
+
+
+
 
 let currentNum = 0;
 function cartNumber(){
@@ -63,19 +73,58 @@ function onLoadCartNumber(){
         document.querySelector(".cart_increase").textContent = 0;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 onLoadCartNumber();
+
+function setItems(product){
+    
+    let productInCart = localStorage.getItem("ProductsInCart");
+    productInCart  = JSON.parse(productInCart);
+    if(productInCart){
+        product.product_incart += 1;
+        productInCart = {
+            ...productInCart,
+            [product.product_name]:product,
+        }
+        
+        
+        
+    }
+    else{
+        
+        product.product_incart = 1;
+        productInCart = {
+            [product.product_name]:product,
+        };
+        
+    }
+    localStorage.setItem("ProductsInCart",JSON.stringify(productInCart));
+    
+}
+
+
+
+
+function loopingProducts(){
+    let product_items = document.querySelector(".items_in_cart"); 
+    let items = localStorage.getItem("ProductsInCart");
+    items = JSON.parse(items);
+    Object.values(items).map(item=>{
+        product_items.innerHTML +=`
+        <div class="col-4">${item.product_name}</div>
+        <div class="col-4">${item.product_price}</div>
+        <div class="col-4">${item.product_incart}</div>
+        `
+    })
+}
+
+
+
+loopingProducts();
+
+
+
+
+
+
+
+
