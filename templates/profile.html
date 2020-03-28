@@ -3,6 +3,9 @@
 {% block content %}
 
     <div class="container-fluid">
+        {% for profile in profiles %}
+            {% if user.is_authenticated %}
+                {% if user.username == profile.user.username %}
         <div class="row justify-content-center">
             <div class="col-sm-8 bg-white profile">
                 <div class="row shadow-lg">
@@ -11,7 +14,10 @@
                     </div>
                     <div class="col-sm-8 " style="padding:1em 0 2em 8em;">
                         <h6><small class="font-weight-bold text-secondary">Hello everyone!!! I am</small></h6>
-                        <h1 class="display-4">John Doe</h1>
+                        
+                        
+                        <h1 class="display-4">{{user.username|title}}</h1>
+                        
                         <p>SENIOR SOFTWARE ENGINEER</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sapiente 
                             ipsam quis explicabo praesentium molestias, molestiae quod inventore dolor 
@@ -20,11 +26,14 @@
 
                         <i class='far fa-calendar-alt' style='font-size:24px;color:gray;'><span style="margin-left: 1em;">16th jan,2002</span></i><br>
                         <i class="fa fa-phone" style="color:gray;"><span style="margin-left: 2em;">98056489454</span></i><br>
-                        <i class="fa fa-envelope"style="color:gray"><span style="margin-left: 2em;"></span>john@gmail.com</i><br>
+                        <i class="fa fa-envelope"style="color:gray"><span style="margin-left: 2em;"></span>{{profile.user.email}}</i><br>
                         <i class="fa fa-home" style="color:gray"><span style="margin-left: 2em;">Los Angeles,USA</span></i><br>
                     </div>
                 </div>
             </div>
         </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}

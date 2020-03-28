@@ -35,11 +35,11 @@ for(let i=0;i<items.length;i++){
 
 
 
-let carts = document.querySelectorAll("button");
+let carts = document.querySelectorAll(".add-cart");
 for(let i=0;i<carts.length;i++){
     carts[i].addEventListener("click",()=>{
-        cartNumber();
-        setItems(products[i]);
+        cartNumber(products[i]);
+        
         
     })
 }
@@ -48,7 +48,7 @@ for(let i=0;i<carts.length;i++){
 
 
 let currentNum = 0;
-function cartNumber(){
+function cartNumber(product){
     let checkValueInCart = localStorage.getItem("cartNumber");
     checkValueInCart = parseInt(checkValueInCart);
 
@@ -61,7 +61,7 @@ function cartNumber(){
         localStorage.setItem("cartNumber",1);
         document.querySelector(".cart_increase").textContent=1;
     }
-    
+    setItems(product);
     
 }
 function onLoadCartNumber(){
@@ -79,12 +79,15 @@ function setItems(product){
     
     let productInCart = localStorage.getItem("ProductsInCart");
     productInCart  = JSON.parse(productInCart);
-    if(productInCart){
-        product.product_incart += 1;
-        productInCart = {
-            ...productInCart,
-            [product.product_name]:product,
+    if(productInCart !=null){
+        if(productInCart[product.product_name]== undefined){
+            productInCart = {
+                ...productInCart,
+                [product.product_name]:product,
+            }
         }
+        productInCart[product.product_name].product_incart += 1;
+        
         
         
         

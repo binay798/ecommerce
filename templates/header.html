@@ -16,12 +16,19 @@
             <li class="nav-item">
                 <a href="{% url 'shop:signup' %}" class="nav-link pl-4">Sign Up</a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
-                <a href="{% url 'shop:signin' %}" class="nav-link pl-4">Sign In</a>
+                <a href="{% url 'shop:logout' %}" class="nav-link pl-4">Logout</a>
             </li>
             <li class="nav-item">
                 <a href="{% url 'shop:profile' %}" class="nav-link pl-4">Profile</a>
             </li>
+            {% else %}
+            <li class="nav-item">
+                <a href="{% url 'shop:signin' %}" class="nav-link pl-4">Sign In</a>
+            </li>
+            
+            {% endif %}
             <li class="nav-item">
                 <a href="{% url 'shop:cart' %}" class="nav-link pl-4 "><i class="fa fa-shopping-cart"></i>
                     <span style="padding:1px;background-color: rgb(222, 250, 98);border-radius: 5px;" class="cart_increase">0</span>
