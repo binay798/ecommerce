@@ -12,13 +12,18 @@ class Items(models.Model):
     class Meta:
         verbose_name_plural = 'items'
 
-class Profile(models.Model):
+
+
+class Info(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to='pics',blank=True)
+    address = models.CharField(max_length=30)
+    position = models.CharField(max_length=30)
+    phone_number = models.IntegerField()
+    DOB = models.DateField()
 
     def __str__(self):
         return self.user.username
 
     class Meta:
         verbose_name_plural = 'Profiles'
-

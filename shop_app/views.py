@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-from .models import Items
+from .models import Items,Info
 from django.contrib.auth.models import User,auth
-from .models import Profile
+
 # Create your views here.
 def index(request):
     items = Items.objects.all()
@@ -26,7 +26,7 @@ def signup(request):
         return render(request,'signup.html')
 
 def profile(request):
-    profiles = Profile.objects.all()
+    profiles = Info.objects.all()
     context = {'profiles':profiles}
     return render(request,'profile.html',context)
 
