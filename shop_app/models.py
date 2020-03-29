@@ -16,7 +16,7 @@ class Items(models.Model):
 
 class Info(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    thumbnail = models.ImageField(upload_to='pics',blank=True)
+    thumbnail = models.ImageField(upload_to='pics',default='profile_default.jpg',blank=True)
     address = models.CharField(max_length=30)
     position = models.CharField(max_length=30)
     phone_number = models.IntegerField()

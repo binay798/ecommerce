@@ -10,29 +10,49 @@
             <div class="col-sm-8 bg-white profile">
                 <div class="row shadow-lg">
                     <div class="col-sm-4">
-                        <img src="/static/images/person.jpg" class="img-fluid  img-thumbnail m-4" alt="">
+                        {% if profile.thumbnail %}
+                            <img src="{{profile.thumbnail.url}}" class="img-fluid  img-thumbnail m-4" alt="Image">
+                        {% else %}
+                        <img src="{% static '/images/profile_default.jpg' %}" class="img-fluid  img-thumbnail m-4" alt="Image">
+                        {% endif %}
+                        <a href="{% url 'shop:profile_update' profile.id %}">Edit Profile</a>
                     </div>
                     <div class="col-sm-8 " style="padding:1em 0 2em 8em;">
                         <h6><small class="font-weight-bold text-secondary">Hello everyone!!! I am</small></h6>
                         
                         
                         <h1 class="display-4">{{user.username|title}}</h1>
-                        
-                        <p>SENIOR SOFTWARE ENGINEER</p>
+                        {% if profile.position %}
+                        <p>{{profile.position}}</p>
+                        {% else %}
+                        <p>Profile</p>
+                        {% endif %}
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sapiente 
                             ipsam quis explicabo praesentium molestias, molestiae quod inventore dolor 
                             fuga veritatis id saepe aliquam qui facilis laborum modi enim impedit
                              nostrum consectetur eveniet ducimus amet dolorum! Dolor nam quis ducimus?</p>
+                        {% if profile.DOB %}
+                        <i class='fa fa-calendar' style='font-size:24px;color:gray;'><span style="margin-left: 2em;">{{profile.DOB}}</span></i><br>
+                        {% endif %}
 
-                        <i class='far fa-calendar-alt' style='font-size:24px;color:gray;'><span style="margin-left: 1em;">16th jan,2002</span></i><br>
-                        <i class="fa fa-phone" style="color:gray;"><span style="margin-left: 2em;">98056489454</span></i><br>
+                        {% if profile.DOB %}
+                        <i class="fa fa-phone" style="color:gray;"><span style="margin-left: 2em;">{{profile.phone_number}}</span></i><br>
+                        {% endif %}
+
+                        {% if profile.DOB %}
                         <i class="fa fa-envelope"style="color:gray"><span style="margin-left: 2em;"></span>{{profile.user.email}}</i><br>
-                        <i class="fa fa-home" style="color:gray"><span style="margin-left: 2em;">Los Angeles,USA</span></i><br>
+                        {% endif %}
+                        
+                        {% if profile.DOB %}
+                        <i class="fa fa-home" style="color:gray"><span style="margin-left: 2em;">{{profile.address}}</span></i><br>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
+                
                 {% endif %}
+                
             {% endif %}
         {% endfor %}
     </div>

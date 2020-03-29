@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Items,Info
 from django.contrib.auth.models import User,auth
-
+from .forms import ProfileForm
 # Create your views here.
 def index(request):
     items = Items.objects.all()
@@ -29,6 +29,22 @@ def profile(request):
     profiles = Info.objects.all()
     context = {'profiles':profiles}
     return render(request,'profile.html',context)
+
+
+def profile_update(request,user_id):
+    profile = Info.objects.get(id=user_id)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES,instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect("shop:profile")
+        else:
+            return redirect("profile_update")
+
+    else:
+        form = ProfileForm(instance=profile)
+        context = {'form':form,'profile':profile}
+        return render(request,'update_profile.html',context)
 
 def cart(request):
     return render(request,'cart.html')
