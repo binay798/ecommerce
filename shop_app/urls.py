@@ -11,4 +11,5 @@ urlpatterns = [
     path('logout',views.logout,name="logout"),
     path("profile_update/<int:user_id>",views.profile_update,name="profile_update"),
     
+    
 ]

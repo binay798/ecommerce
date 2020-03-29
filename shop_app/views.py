@@ -5,7 +5,9 @@ from .forms import ProfileForm
 # Create your views here.
 def index(request):
     items = Items.objects.all()
-    context = {'items':items}
+    user = request.user
+    
+    context = {'items':items,'user':user}
     return render(request,'index.html',context)
 
 def signup(request):
@@ -29,6 +31,12 @@ def profile(request):
     profiles = Info.objects.all()
     context = {'profiles':profiles}
     return render(request,'profile.html',context)
+
+
+
+
+
+
 
 
 def profile_update(request,user_id):
@@ -60,7 +68,7 @@ def signin(request):
             return redirect("/")
         else:
             print("Not valid")
-            return redirect("signin")
+            return redirect("shop:signin")
         
     else:
         return render(request,'signin.html')

@@ -121,13 +121,16 @@ function loopingProducts(){
 }
 
 
+document.querySelector(".checkout").addEventListener("click",()=>{
+    window.alert("Your items will be delivered soon!!");
+})
+
+
+
+
+
+
 
 loopingProducts();
-
-
-
-
-
-
 
 
